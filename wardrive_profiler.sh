@@ -1,8 +1,23 @@
 #!/bin/bash
 # wigle_signal_profiler.sh
-# Description: Analyzes WiGLE CSV data to profile nearby wireless networks.
-# Constructs used: function, loop, case statement, string parsing
-# Dependencies: bash
+# Description:
+# Analyzes WiGLE CSV export data to profile nearby wireless networks.
+# The script parses each network entry, categorizes it by security type
+# (open vs secured) and by network type (ISP, private/home, unknown),
+# then outputs a summarized report of findings.
+
+# Constructs Used:
+# - Function (analyze_file)
+# - Loop (while read for CSV parsing)
+# - Case Statement (network classification and security detection)
+# - String Parsing (IFS for CSV parsing, pattern matching with wildcards)
+# - Conditional Statements (file existence check)
+# - Process Substitution (tail -n +2 to skip CSV header)
+
+# Dependencies / Requirements:
+# - Bash shell
+# - Valid WiGLE CSV export file as input
+# - Read permissions for the provided file
 
 # --- FUNCTION ---
 analyze_file() {
